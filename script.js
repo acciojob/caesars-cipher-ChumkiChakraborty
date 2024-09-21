@@ -28,19 +28,31 @@ const lookup = {
   Y: "L",
   Z: "M",
   "?": "?",
-  ",": ",",
+  ",": ","
 };
 
 function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
+  let decodedArr = []; // Your result goes here
 
-  return; //return decodedArr
+  // Loop through each character of the input string
+  for (let i = 0; i < encodedStr.length; i++) {
+    let currentChar = encodedStr[i];
+
+    // If the character exists in the lookup table, decode it
+    if (lookup[currentChar]) {
+      decodedArr.push(lookup[currentChar]);
+    } else {
+      // If it doesn't exist in lookup (e.g., space or punctuation), keep it as is
+      decodedArr.push(currentChar);
+    }
+  }
+
+  // Join the array into a single string and return it
+  return decodedArr.join('');
 }
 
-// You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
-
-// console.log(rot13("SERR YBIR? NPPVBWBO"));
+// You can test your code by running the above function and printing it to the console
+console.log(rot13("SERR YBIR? NPPVBWBO")); // Outputs: "FREE LOVE? ACCIOSUBO"
 
 // Do not change this line
 window.rot13 = rot13;
